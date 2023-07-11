@@ -1,0 +1,52 @@
+name: telerising
+services:
+  telerising:
+    container_name: telerising
+    image: qoopido/telerising.minimal:latest
+    network_mode: bridge
+    ports:
+      - target: 5000
+        published: "5000"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - '/etc/timezone:/etc/timezone:ro'
+      - '/etc/localtime:/etc/localtime:ro'
+      - type: bind
+        source: /DATA/AppData/$AppID/settings.json
+        target: /settings.json
+    user: '${UID}:${GID}'
+    environment:
+      UID: $PUID
+      GID: $PGID
+    privileged: false
+    x-casaos:
+      ports:
+        - container: "5000"
+          description:
+            en_us: "WebUI HTTP Port"
+      volumes:
+        - container: /settings.json
+          description:
+            en_us: "The path to your persisted Telerising configuration file (create a file containing just {} for new installs)"
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  author: Double-A-92
+  category: Media
+  description:
+    en_us: "Telerising is a service that provides an API to generate simple .m3u's from Zattoo & Co."
+  developer: dlueth
+  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Telerising/icon.png
+  index: /
+  main: telerising
+  port_map: "5000"
+  store_app_id: telerising
+  tips:
+      before_install:
+          en_us: |
+              Create /DATA/AppData/Telerising/settings.json containing just {} for new installs.
+  title:
+    en_us: Telerising
