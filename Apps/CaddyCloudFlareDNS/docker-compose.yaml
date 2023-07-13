@@ -1,0 +1,48 @@
+name: caddy-cloudflaredns
+services:
+  caddy-cloudflaredns:
+    environment:
+      - ACME_AGREE=true
+      - CLOUDFLARE_API_TOKEN=<CloudFlare API Token>
+      - CLOUDFLARE_EMAIL=<CloudFlare API Account>
+    image: slothcroissant/caddy-cloudflaredns:2.6.4
+    ports:
+      - target: 80
+        published: "80"
+        protocol: tcp
+      - target: 443
+        published: "443"
+        protocol: tcp
+      - target: 443
+        published: "443"
+        protocol: udp
+    privileged: true
+    restart: always
+    volumes:
+      - type: bind
+        source: /DATA/AppData/caddy/Caddyfile.txt
+        target: /etc/caddy/Caddyfile
+      - type: bind
+        source: /DATA/AppData/caddy/data
+        target: /data
+      - type: bind
+        source: /DATA/AppData/caddy/config
+        target: /config
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  author: Double-A-92
+  category: Network
+  description:
+    en_us: "caddy-cloudflaredns adds Cloudflare LetsEncrypt support to the base Caddy 2 image."
+  developer: slothcroissant
+  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/CaddyCloudFlareDNS/icon.png
+  store_app_id: caddy-cloudflaredns
+  tips:
+    custom: |-
+      Use this command to hot reload Caddyfile:
+      caddy reload --config /etc/caddy/Caddyfile
+  title:
+    en_us: Caddy with Cloudflare LetsEncrypt support 
