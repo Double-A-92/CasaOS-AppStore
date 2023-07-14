@@ -44,7 +44,7 @@ x-casaos:
     before_install: |
       - Replace CLOUDFLARE_API_TOKEN and CLOUDFLARE_EMAIL with your actual credentials
       - Create the file /DATA/AppData/caddy/Caddyfile.txt
-    after_install: |
+    custom: |
       - Use this command to hot reload Caddyfile: caddy reload --config /etc/caddy/Caddyfile
   title:
     en_us: Caddy with Cloudflare LetsEncrypt support 
