@@ -35,6 +35,25 @@ x-casaos:
     en_us: Telerising is a service that provides an API to generate simple .m3u's from Zattoo & Co.
   developer: dlueth
   icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Telerising/icon.png
+  screenshot_link:
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/screenshot-1.jpg
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/screenshot-2.jpg
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/screenshot-3.jpg
+  tagline:
+    en_us: Network-wide Ad Blocking
+    zh_cn: 网络广告拦截
+    ar_sa: حظر الإعلانات على نطاق الشبكة
+    de_de: Netzwerkweite Werbeblockierung
+    es_es: Bloqueo de anuncios a nivel de red
+    fr_fr: Blocage des publicités sur tout le réseau
+    hu_hu: Hálózati hirdetések blokkolása
+    it_it: Blocco pubblicità a livello di rete
+    ru_ru: Блокировка рекламы на всей сети
+    pl_pl: Blokowanie reklam na całej sieci
+    pt_br: Bloqueio de anúncios em toda a rede
+    sv_se: Blockera annonser över hela nätverket
+    uk_ua: Блокування реклами на всій мережі
+  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/thumbnail.jpg
   tips:
     before_install:
       en_us: |
