@@ -1,4 +1,4 @@
-name: pihole
+name: pihole-amedeo
 services:
   pihole:
     environment:
@@ -95,7 +95,7 @@ x-casaos:
     - arm64
     - "386"
     - arm
-  main: pihole
+  main: pihole-amedeo
   author: CasaOS Team
   category: Network
   description:
@@ -140,6 +140,6 @@ x-casaos:
       zh_cn: |
         默认密码：`casaos`
   title:
-    en_us: Pi-hole
+    en_us: Pi-hole Amedeo
   index: /admin
   port_map: "8800"
