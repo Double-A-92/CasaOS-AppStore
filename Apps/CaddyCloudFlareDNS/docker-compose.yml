@@ -41,8 +41,10 @@ x-casaos:
   icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/CaddyCloudFlareDNS/icon.png
   store_app_id: caddy-cloudflaredns
   tips:
-    custom: |-
-      Use this command to hot reload Caddyfile:
-      caddy reload --config /etc/caddy/Caddyfile
+    before_install: |
+      - Replace CLOUDFLARE_API_TOKEN and CLOUDFLARE_EMAIL with your actual credentials
+      - Create the file /DATA/AppData/caddy/Caddyfile.txt
+    after_install: |
+      - Use this command to hot reload Caddyfile: caddy reload --config /etc/caddy/Caddyfile
   title:
     en_us: Caddy with Cloudflare LetsEncrypt support 

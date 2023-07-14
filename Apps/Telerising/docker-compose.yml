@@ -38,7 +38,7 @@ x-casaos:
   tips:
     before_install:
       en_us: |
-        Create /DATA/AppData/Telerising/settings.json containing just {} for new installs.
+        Create /DATA/AppData/Telerising/settings.json containing just {}.
   title:
     en_us: Telerising
   index: /
