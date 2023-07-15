@@ -48,4 +48,4 @@ x-casaos:
               
         - Use this command to hot reload Caddyfile: caddy reload --config /etc/caddy/Caddyfile
   title:
-    en_us: Caddy with Cloudflare LetsEncrypt support 
+    en_us: Caddy with Cloudflare
