@@ -57,7 +57,7 @@ x-casaos:
   developer: LinuxServer.io
   icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Heimdall/icon.png
   index: /
-  main: app
+  main: heimdall
   port_map: "4086"
   project_url: https://github.com/linuxserver/Heimdall
   scheme: http
