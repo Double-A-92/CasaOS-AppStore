@@ -8,6 +8,7 @@ services:
     image: linuxserver/heimdall:2.5.6
     labels:
       icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/heimdall-icon.png
+    network_mode: bridge
     ports:
       - target: 80
         published: "4086"

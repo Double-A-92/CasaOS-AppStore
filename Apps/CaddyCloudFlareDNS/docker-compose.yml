@@ -6,6 +6,7 @@ services:
       - CLOUDFLARE_API_TOKEN=<CloudFlare API Token>
       - CLOUDFLARE_EMAIL=<CloudFlare API Account>
     image: slothcroissant/caddy-cloudflaredns:2.6.4
+    network_mode: bridge
     ports:
       - target: 80
         published: "80"

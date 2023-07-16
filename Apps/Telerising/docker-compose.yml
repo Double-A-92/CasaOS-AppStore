@@ -2,6 +2,7 @@ name: telerising
 services:
   telerising:
     image: qoopido/telerising.minimal:latest
+    network_mode: bridge
     ports:
       - target: 5000
         published: "5000"
