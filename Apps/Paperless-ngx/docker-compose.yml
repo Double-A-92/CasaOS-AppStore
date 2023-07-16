@@ -31,7 +31,7 @@ services:
       - /DATA/AppData/$AppID/export:/usr/src/paperless/export
       - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
     environment:
-      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_REDIS: redis://redis:6379
       USERMAP_UID: $PUID
       USERMAP_GID: $PGID                       
       PAPERLESS_TIME_ZONE: $TZ 
