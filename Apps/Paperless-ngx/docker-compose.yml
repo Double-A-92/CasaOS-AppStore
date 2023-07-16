@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     volumes:
       - /DATA/AppData/$AppID/redisdata:/data
-    network_mode: bridge
+    network_mode: paperless
     x-casaos:
       volumes:
           - container: /data
@@ -13,11 +13,11 @@ services:
                 en_us: Redis data directory
 
   paperless:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:1.16
     restart: unless-stopped
     depends_on:
       - redis
-    network_mode: bridge
+    network_mode: paperless
     ports:
       - "8000:8000"
     healthcheck:
