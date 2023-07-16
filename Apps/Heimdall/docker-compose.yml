@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
     volumes:
       - type: bind
-        source: /DATA/AppData/heimdall/config
+        source: /DATA/AppData/$AppID/config
         target: /config
     x-casaos:
       envs:
