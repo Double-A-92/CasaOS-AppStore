@@ -100,5 +100,7 @@ x-casaos:
         - To create a user run 'python3 manage.py createsuperuser' from within the container.
 
         - To fix an issue you might have to add 'vm.overcommit_memory = 1' to /etc/sysctl.conf on the host and then reboot
+
+        - Add the environment variable PAPERLESS_URL=https://paperless.yourdomain.com if you are using a custom domain.
   index: /
   port_map: "8000"
