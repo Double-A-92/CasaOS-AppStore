@@ -15,7 +15,7 @@ services:
     image: ghcr.io/paperless-ngx/paperless-ngx:1.16
     restart: unless-stopped
     depends_on:
-      - redis
+      - broker
     ports:
       - "8000:8000"
     healthcheck:
