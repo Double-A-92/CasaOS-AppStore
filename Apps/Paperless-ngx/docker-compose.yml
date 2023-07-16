@@ -1,23 +1,21 @@
 name: paperless-ngx
 services:
-  redis:
+  broker:
     image: docker.io/library/redis:7
     restart: unless-stopped
     volumes:
       - /DATA/AppData/$AppID/redisdata:/data
-    network_mode: paperless
     x-casaos:
       volumes:
           - container: /data
             description:
                 en_us: Redis data directory
 
-  paperless:
+  webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:1.16
     restart: unless-stopped
     depends_on:
       - redis
-    network_mode: paperless
     ports:
       - "8000:8000"
     healthcheck:
@@ -31,7 +29,7 @@ services:
       - /DATA/AppData/$AppID/export:/usr/src/paperless/export
       - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
     environment:
-      PAPERLESS_REDIS: redis://redis:6379
+      PAPERLESS_REDIS: redis://broker:6379
       USERMAP_UID: $PUID
       USERMAP_GID: $PGID                       
       PAPERLESS_TIME_ZONE: $TZ 
@@ -76,7 +74,7 @@ x-casaos:
         - amd64
         - arm
         - arm64
-    main: paperless
+    main: webserver
     author: Double-A-92
     category: Documents
     description:                    
@@ -91,5 +89,7 @@ x-casaos:
         before_install:
             en_us: |
                 - To create a user run 'python3 manage.py createsuperuser' from within the container.
+
+                - To fix an issue you might have to add 'vm.overcommit_memory = 1' to /etc/sysctl.conf on the host and then reboot
     index: /                        
     port_map: "8000"               
