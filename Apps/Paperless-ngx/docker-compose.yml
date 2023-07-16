@@ -1,0 +1,95 @@
+name: paperless-ngx
+services:
+  redis:
+    image: docker.io/library/redis:7
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/redisdata:/data
+    network_mode: bridge
+    x-casaos:
+      volumes:
+          - container: /data
+            description:
+                en_us: Redis data directory
+
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    restart: unless-stopped
+    depends_on:
+      - redis
+    network_mode: bridge
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "-S", "--max-time", "2", "http://localhost:8000"]
+      interval: 600s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - /DATA/AppData/$AppID/data:/usr/src/paperless/data
+      - /DATA/AppData/$AppID/media:/usr/src/paperless/media
+      - /DATA/AppData/$AppID/export:/usr/src/paperless/export
+      - /DATA/AppData/$AppID/consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      USERMAP_UID: $PUID
+      USERMAP_GID: $PGID                       
+      PAPERLESS_TIME_ZONE: $TZ 
+      PAPERLESS_OCR_LANGUAGE: eng
+    x-casaos:
+      envs:                         
+        - container: PAPERLESS_REDIS
+          description:
+              en_us: Redis server connection string
+        - container: USERMAP_UID
+          description:
+              en_us: The ID of the paperless user in the container
+        - container: USERMAP_GID
+          description:
+              en_us: The ID of the paperless Group in the container.
+        - container: PAPERLESS_TIME_ZONE
+          description:
+              en_us: Time zone
+        - container: PAPERLESS_OCR_LANGUAGE
+          description:
+              en_us:  OCR languages to use
+      ports:                      
+        - container: "8000"
+          description:
+              en_us: WebUI HTTP Port
+      volumes:
+          - container: /usr/src/paperless/data
+            description:
+                en_us: Paperless config directory
+          - container: /usr/src/paperless/media
+            description:
+              en_us: This is where your documents and thumbnails are stored.
+          - container: /usr/src/paperless/export
+            description:
+                en_us: The document exporter exports all your data from paperless into this folder for backup or migration to another DMS.
+          - container: /usr/src/paperless/consume
+            description:
+              en_us: This where your documents should go to be consumed.
+
+x-casaos:
+    architectures:               
+        - amd64
+        - arm
+        - arm64
+    main: paperless
+    author: Double-A-92
+    category: Documents
+    description:                    
+        en_us: Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time, safely protected from prying eyes. Your data is your data alone and you deserve to choose where it is stored, whether it is shared with some third party, and how it's transmitted over the internet.
+    developer: paperless-ngx
+    icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Paperless-ngx/icon.png
+    tagline:                       
+        en_us: Free, secure, and distributed file synchronisation tool.
+    title:                          
+        en_us: Paperless-ngx
+    tips:
+        before_install:
+            en_us: |
+                - To create a user run 'python3 manage.py createsuperuser' from within the container.
+    index: /                        
+    port_map: "8000"               
