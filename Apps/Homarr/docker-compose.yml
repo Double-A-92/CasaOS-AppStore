@@ -1,0 +1,49 @@
+name: homarr
+services:
+  homarr:
+    image: ghcr.io/ajnart/homarr:0.13.0
+    ports:
+      - target: 7575
+        published: "7575"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID/data/configs
+        target: /app/data/configs
+      - type: bind
+        source: /DATA/AppData/$AppID/public/icons
+        target: /app/public/icons
+    network_mode: bridge
+    privileged: false
+    x-casaos:
+      ports:
+        - container: "7575"
+          description:
+            en_us: WebUI HTTP Port
+      volumes:
+        - container: /app/data/configs
+          description:
+            en_us: Appdata location
+        - container: /app/public/icons
+          description:
+            en_us: Icon location
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: homarr
+  author: Double-A-92
+  category: WEB
+  description:
+    en_us: Simplify the management of your server with Homarr - a sleek, modern dashboard that puts all of your apps and services at your fingertips. 
+      With Homarr, you can access and control everything in one convenient location. 
+      Homarr seamlessly integrates with the apps you've added, providing you with valuable information and giving you complete control. 
+      Installation is a breeze, and Homarr supports a wide range of deployment methods.
+  developer: ajnart
+  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Homarr/icon.png
+  index: /
+  port_map: "7575"
+  title:
+    en_us: Homarr
