@@ -14,7 +14,7 @@ services:
       - type: bind
         source: /DATA/AppData/$AppID/settings.json
         target: /settings.json
-    user: "$PUID:$PGID"
+    user: $PUID:$PGID
     labels:
       - "com.centurylinklabs.watchtower.scope=telerising"
     x-casaos:
