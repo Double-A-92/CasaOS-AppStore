@@ -4,7 +4,7 @@ Welcome to my CasaOS Appstore, a 3rd-party repository of custom apps for the Cas
 
 ## How to use this repository
 
-To use this repository, you need to have CasaOS installed on your device. You can download it from the official website: [https://www.casaos.com/](https://casaos.io/)
+To use this repository, you need to have CasaOS installed on your device. You can download it from the official website: https://casaos.io/
 
 Then, you need to add this repository as a source in your CasaOS settings. To do that, follow these steps:
 
