@@ -12,7 +12,8 @@ Then, you need to add this repository as a source in your CasaOS settings. To do
 - Click on Add Source
 - Enter the URL of this repository:
   ```bash
-  https://github.com/Double-A-92/CasaOS-AppStore/archive/refs/heads/main.zip```
+  https://github.com/Double-A-92/CasaOS-AppStore/archive/refs/heads/main.zip
+  ```
 - Click on Add
 
 or
