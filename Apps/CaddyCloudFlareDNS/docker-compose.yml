@@ -43,6 +43,8 @@ x-casaos:
   tips:
     before_install:
       en_us: >
+        - Change the CasaOS WebUI Port to something else than 80 (e.g. 90)
+        
         - Replace CLOUDFLARE_API_TOKEN and CLOUDFLARE_EMAIL with your actual credentials
 
         - Create the file /DATA/AppData/caddy/Caddyfile.txt
