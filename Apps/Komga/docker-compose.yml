@@ -35,6 +35,10 @@ services:
             en_us: App data location
 
 x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
   author: Double-A-92
   developer: gotson
   category: Media
