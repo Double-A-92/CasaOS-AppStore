@@ -1,0 +1,39 @@
+name: homebridge
+services:
+  homebridge:
+    image: homebridge/homebridge:latest
+    restart: always
+    volumes:
+      - /DATA/AppData/$AppID:/homebridge
+    network_mode: host
+    environment:
+      - TZ=$TZ
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    x-casaos:
+      volumes:
+        - container: /homebridge
+          description:
+            en_us: Appdata location
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: homebridge
+  author: Double-A-92
+  category: Home Automation
+  description:
+    en_us: Homebridge is a lightweight NodeJS server you can run on your home network that emulates the iOS HomeKit API. 
+      It supports Plugins, which are community-contributed modules that provide a basic bridge from HomeKit 
+      to various 3rd-party APIs provided by manufacturers of "smart home" devices.
+  developer: homebridge
+  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/homebridge/icon.png
+  index: /
+  port_map: "8581"
+  title:
+    en_us: Homebridge
