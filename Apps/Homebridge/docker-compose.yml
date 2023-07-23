@@ -32,7 +32,7 @@ x-casaos:
       It supports Plugins, which are community-contributed modules that provide a basic bridge from HomeKit 
       to various 3rd-party APIs provided by manufacturers of "smart home" devices.
   developer: homebridge
-  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/homebridge/icon.png
+  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Homebridge/icon.png
   index: /
   port_map: "8581"
   title:
