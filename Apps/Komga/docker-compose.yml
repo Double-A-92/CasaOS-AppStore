@@ -1,0 +1,49 @@
+name: komga
+services:
+  komga:
+    environment:
+      - TZ=$TZ
+    image: gotson/komga:1.x
+    labels:
+      icon: https://icon.casaos.io/main/all/komga.png
+    ports:
+      - target: 25600
+        published: "25600"
+        protocol: tcp
+    user: $PUID:$PGID
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/$AppID/config
+        target: /config
+      - type: bind
+        source: /DATA/AppData/$AppID/data
+        target: /data
+    network_mode: bridge
+    privileged: false
+    x-casaos:
+      ports:
+        - container: "25600"
+          description:
+            en_us: WebUI HTTP Port
+      volumes:
+        - container: /config
+          description:
+            en_us: App config location
+        - container: /data
+          description:
+            en_us: App data location
+
+x-casaos:
+  author: Double-A-92
+  developer: gotson
+  category: Media
+  description:
+    en_us: Free and open source comics/mangas media server
+  icon: https://cdn.jsdelivr.net/gh/Double-A-92/CasaOS-AppStore@main/Apps/Komga/icon.png
+  index: /
+  port_map: "25600"
+  scheme: http
+  store_app_id: komga
+  title:
+    custom: Komga
